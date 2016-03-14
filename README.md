@@ -24,3 +24,25 @@ import(
   "myApp/bluesnap"
 )
 ```
+
+# Example Code
+Example for getting a users cards
+```go
+if len(account.BSShopperId) == 0 {
+		return c.RenderJson(Cards{Message: getSuccessMessage("No cards on file."), Cards: &bluesnap.CardList{
+			Values: make([]*bluesnap.Card, 0),
+		}})
+
+} else {
+		b := &bluesnap.BlueSnap{}
+		b.Init()
+		b.Test = !isProd
+		cList, err := b.GetCards(account.BSShopperId)
+		if err != nil {
+			return c.RenderJson(Cards{Message: getSuccessMessage("Error getting cards on file."), Cards: &bluesnap.CardList{
+				Values: make([]*bluesnap.Card, 0),
+			}})
+		}
+		return c.RenderJson(Cards{Message: getSuccessMessage("Cards on file"), Cards: cList})
+}
+```
