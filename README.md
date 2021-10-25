@@ -1,5 +1,6 @@
 # Bluesnap Golang SDK
 This was written for the Revel Framework
+This is not actively maintained, but can be updated if sponsered to do so
 
 # Setup
 * Edit bluesnap/api.go lines 6 and 61. Change myApp to your app name
